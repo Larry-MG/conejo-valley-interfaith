@@ -44,22 +44,22 @@ export function HeroSection() {
   const words = "Partnering Together To Serve Our Community".split(" ");
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="relative min-h-[calc(100vh-5rem)] flex items-center overflow-hidden">
       {/* Animated gradient mesh background */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-cream" />
         <motion.div
-          className="absolute -top-1/3 -left-1/4 h-[600px] w-[600px] rounded-full bg-sage/20 blur-[120px]"
+          className="hidden md:block absolute -top-1/3 -left-1/4 h-[600px] w-[600px] rounded-full bg-sage/20 blur-[120px]"
           animate={{ x: [0, 80, 0], y: [0, -40, 0] }}
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute -bottom-1/4 -right-1/4 h-[500px] w-[500px] rounded-full bg-terracotta/15 blur-[120px]"
+          className="hidden md:block absolute -bottom-1/4 -right-1/4 h-[500px] w-[500px] rounded-full bg-terracotta/15 blur-[120px]"
           animate={{ x: [0, -60, 0], y: [0, 50, 0] }}
           transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute top-1/3 left-1/2 h-[400px] w-[400px] rounded-full bg-warm-stone/15 blur-[100px]"
+          className="hidden md:block absolute top-1/3 left-1/2 h-[400px] w-[400px] rounded-full bg-warm-stone/15 blur-[100px]"
           animate={{ x: [0, 50, 0], y: [0, -60, 0] }}
           transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -68,7 +68,7 @@ export function HeroSection() {
       {/* Floating leaves — positioned at viewport edges to frame content */}
       {/* Green — top-left corner */}
       <motion.svg
-        className="absolute top-24 left-[3%] w-14 h-14 text-[#7CB342] opacity-25"
+        className="hidden md:block absolute top-24 left-[3%] w-14 h-14 text-[#7CB342] opacity-25"
         viewBox="0 0 24 24"
         animate={{ y: [0, -18, 0], rotate: [-30, -10, -30] }}
         transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
@@ -77,7 +77,7 @@ export function HeroSection() {
       </motion.svg>
       {/* Orange — top-right corner */}
       <motion.svg
-        className="absolute top-14 right-[2%] w-11 h-11 text-[#E8751A] opacity-22"
+        className="hidden md:block absolute top-14 right-[2%] w-11 h-11 text-[#E8751A] opacity-22"
         viewBox="0 0 24 24"
         animate={{ y: [0, -14, 0], rotate: [20, -10, 20] }}
         transition={{ duration: 13, repeat: Infinity, ease: "easeInOut" }}
@@ -86,7 +86,7 @@ export function HeroSection() {
       </motion.svg>
       {/* Golden — bottom-left corner */}
       <motion.svg
-        className="absolute bottom-20 left-[2%] w-10 h-10 text-[#DAA520] opacity-20"
+        className="hidden md:block absolute bottom-20 left-[2%] w-10 h-10 text-[#DAA520] opacity-20"
         viewBox="0 0 24 24"
         animate={{ y: [0, -20, 0], rotate: [10, -30, 10] }}
         transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
@@ -95,7 +95,7 @@ export function HeroSection() {
       </motion.svg>
       {/* Crimson — mid right edge */}
       <motion.svg
-        className="absolute top-[48%] right-[1%] w-12 h-12 text-[#C62828] opacity-20"
+        className="hidden md:block absolute top-[48%] right-[1%] w-12 h-12 text-[#C62828] opacity-20"
         viewBox="0 0 24 24"
         animate={{ y: [0, -16, 0], rotate: [-15, 15, -15] }}
         transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
@@ -104,7 +104,7 @@ export function HeroSection() {
       </motion.svg>
       {/* Sage — bottom-right corner */}
       <motion.svg
-        className="absolute bottom-16 right-[4%] w-9 h-9 text-[#8B9A6E] opacity-18"
+        className="hidden md:block absolute bottom-16 right-[4%] w-9 h-9 text-[#8B9A6E] opacity-18"
         viewBox="0 0 24 24"
         animate={{ y: [0, -12, 0], rotate: [30, 5, 30] }}
         transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
@@ -161,10 +161,21 @@ export function HeroSection() {
                 Our Community
               </Link>
             </motion.div>
+
+            <div className="mt-8 lg:hidden relative overflow-hidden rounded-2xl shadow-lg aspect-[4/3]">
+              <Image
+                src={mosaicImages[0].src}
+                alt={mosaicImages[0].alt}
+                fill
+                sizes="100vw"
+                className="object-cover"
+                priority
+              />
+            </div>
           </div>
 
           {/* Right: Mosaic Grid */}
-          <div className="order-2">
+          <div className="order-2 hidden lg:block">
             <div className="grid grid-cols-4 grid-rows-4 gap-2.5 max-w-lg mx-auto lg:max-w-none" style={{ aspectRatio: "1" }}>
               {/* img1 - large, top-left spanning 2x2 */}
               <motion.div

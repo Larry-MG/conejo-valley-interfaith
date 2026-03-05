@@ -37,9 +37,20 @@ export default function HomePage() {
                 Our Community
               </Link>
             </div>
+
+            <div className="mt-8 lg:hidden relative aspect-[4/3] rounded-2xl overflow-hidden">
+              <Image
+                src={previewImages[0].src}
+                alt={previewImages[0].alt}
+                fill
+                priority
+                sizes="100vw"
+                className="object-cover"
+              />
+            </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-3">
+          <div className="hidden lg:grid grid-cols-3 gap-3">
             {previewImages.slice(0, 6).map((img, i) => (
               <div
                 key={img.src}
