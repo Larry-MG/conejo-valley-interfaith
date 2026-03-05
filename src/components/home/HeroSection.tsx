@@ -162,15 +162,24 @@ export function HeroSection() {
               </Link>
             </motion.div>
 
-            <div className="mt-8 lg:hidden relative overflow-hidden rounded-2xl shadow-lg aspect-[4/3]">
-              <Image
-                src={mosaicImages[0].src}
-                alt={mosaicImages[0].alt}
-                fill
-                sizes="100vw"
-                className="object-cover"
-                priority
-              />
+            <div className="mt-8 lg:hidden -mx-1 px-1 overflow-x-auto snap-x snap-mandatory scroll-smooth">
+              <div className="flex gap-3 min-w-max pb-1">
+                {mosaicImages.map((img, i) => (
+                  <div
+                    key={img.src}
+                    className="relative w-[78vw] max-w-[320px] aspect-[4/3] overflow-hidden rounded-2xl shadow-lg snap-center shrink-0"
+                  >
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      sizes="80vw"
+                      priority={i === 0}
+                      className="object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
