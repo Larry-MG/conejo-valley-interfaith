@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter, DM_Serif_Display } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import "./globals.css";
 
 const inter = Inter({
@@ -36,7 +35,6 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${dmSerif.variable} antialiased`}
       >
-        <ScrollProgress />
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Footer />
