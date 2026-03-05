@@ -44,7 +44,7 @@ export function HeroSection() {
   const words = "Partnering Together To Serve Our Community".split(" ");
 
   return (
-    <section className="relative min-h-[calc(100vh-5rem)] flex items-center overflow-hidden">
+    <section className="relative min-h-0 lg:min-h-[calc(100vh-5rem)] flex items-start lg:items-center overflow-hidden">
       {/* Animated gradient mesh background */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-cream" />
@@ -113,7 +113,7 @@ export function HeroSection() {
       </motion.svg>
 
       {/* Content - Split Layout */}
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full py-28">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full py-16 sm:py-20 lg:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left: Text */}
           <div className="text-center lg:text-left order-1">
