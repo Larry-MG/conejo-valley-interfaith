@@ -76,7 +76,7 @@ export function AboutCVIA() {
               <div className="absolute -inset-4 bg-gradient-to-br from-sage/20 to-terracotta/10 rounded-3xl blur-2xl" />
               <div className="relative overflow-hidden rounded-2xl shadow-2xl">
                 <Image
-                  src="/images/hero/cvia-gathering.png"
+                  src="/images/hero/cvia-gathering.webp"
                   alt="CVIA gathering"
                   width={600}
                   height={450}

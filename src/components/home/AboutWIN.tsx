@@ -29,7 +29,7 @@ export function AboutWIN() {
               <div className="absolute -inset-4 bg-gradient-to-br from-terracotta/15 to-sage/10 rounded-3xl blur-2xl" />
               <div className="relative overflow-hidden rounded-2xl shadow-2xl">
                 <Image
-                  src="/images/hero/win-group.png"
+                  src="/images/hero/win-group.webp"
                   alt="Women's Interfaith Network"
                   width={600}
                   height={450}

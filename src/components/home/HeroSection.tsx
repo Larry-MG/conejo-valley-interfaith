@@ -19,12 +19,12 @@ const wordVariants = {
 };
 
 const mosaicImages = [
-  { src: "/images/hero/cvia-gathering.png", alt: "Interfaith leaders gathering" },
-  { src: "/images/gallery/birthday-boxes-2023/img-001.png", alt: "Youth birthday box project" },
-  { src: "/images/gallery/general/img-006.png", alt: "Toiletry drive volunteers" },
-  { src: "/images/gallery/general/img-005.png", alt: "Backpack drive community group" },
-  { src: "/images/gallery/thanksgiving-2025/img-001.png", alt: "Thanksgiving interfaith service" },
-  { src: "/images/gallery/school-supplies-2023/img-001.jpeg", alt: "School supplies volunteers" },
+  { src: "/images/hero/cvia-gathering.webp", alt: "Interfaith leaders gathering" },
+  { src: "/images/gallery/birthday-boxes-2023/img-001.webp", alt: "Youth birthday box project" },
+  { src: "/images/gallery/general/img-006.webp", alt: "Toiletry drive volunteers" },
+  { src: "/images/gallery/general/img-005.webp", alt: "Backpack drive community group" },
+  { src: "/images/gallery/thanksgiving-2025/img-001.webp", alt: "Thanksgiving interfaith service" },
+  { src: "/images/gallery/school-supplies-2023/img-001.webp", alt: "School supplies volunteers" },
 ];
 
 const tileVariants = {
