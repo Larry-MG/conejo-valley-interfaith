@@ -32,9 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.variable} ${dmSerif.variable} antialiased`}
-      >
+      <body className={`${inter.variable} ${dmSerif.variable} antialiased`}>
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Footer />

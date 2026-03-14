@@ -1,0 +1,66 @@
+{
+  "root": {
+    "props": {}
+  },
+  "content": [
+    {
+      "type": "Hero",
+      "props": {
+        "id": "home-hero",
+        "title": "Partnering Together To Serve Our Community",
+        "description": "Creating a sacred space where people of all beliefs come together to foster understanding, peace, and harmony in the Conejo Valley.",
+        "primaryLabel": "Upcoming Events",
+        "primaryHref": "/events",
+        "secondaryLabel": "Our Community",
+        "secondaryHref": "/organizations",
+        "images": [
+          {
+            "src": "/images/hero/cvia-gathering.webp",
+            "alt": "Interfaith leaders gathering"
+          },
+          {
+            "src": "/images/gallery/birthday-boxes-2023/img-001.webp",
+            "alt": "Youth birthday box project"
+          },
+          {
+            "src": "/images/gallery/general/img-006.webp",
+            "alt": "Toiletry drive volunteers"
+          },
+          {
+            "src": "/images/gallery/general/img-005.webp",
+            "alt": "Backpack drive community group"
+          },
+          {
+            "src": "/images/gallery/thanksgiving-2025/img-001.webp",
+            "alt": "Thanksgiving interfaith service"
+          },
+          {
+            "src": "/images/gallery/school-supplies-2023/img-001.webp",
+            "alt": "School supplies volunteers"
+          }
+        ]
+      }
+    },
+    {
+      "type": "IntroColumns",
+      "props": {
+        "id": "home-intro-columns",
+        "leftEyebrow": "About CVIA",
+        "leftTitle": "Building Bridges Across Faiths",
+        "leftBody": "For over 40 years, CVIA has brought together faith communities through dialogue, shared service, and annual gatherings that celebrate unity with respect for differences.",
+        "rightEyebrow": "Women's Interfaith Network",
+        "rightTitle": "Strength Together",
+        "rightBody": "WIN connects over 21 houses of faith through monthly outreach, volunteer projects, and local initiatives supporting families across the region."
+      }
+    },
+    {
+      "type": "CenteredButton",
+      "props": {
+        "id": "home-gallery-button",
+        "label": "View Full Gallery",
+        "href": "/gallery"
+      }
+    }
+  ],
+  "zones": {}
+}
