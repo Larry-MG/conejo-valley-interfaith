@@ -38,7 +38,15 @@ export async function sanityFetch<T>({ query, params, fallback, tags }: SanityFe
       },
     });
 
-    return data ?? fallback;
+    if (data == null) {
+      return fallback;
+    }
+
+    if (Array.isArray(data) && data.length === 0) {
+      return fallback;
+    }
+
+    return data;
   } catch (error) {
     console.error("Sanity fetch failed, serving fallback content.", error);
     return fallback;
