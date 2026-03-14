@@ -1,9 +1,11 @@
-import { NextStudio } from "next-sanity/studio";
+import { metadata, viewport } from "next-sanity/studio";
 import { isSanityConfigured } from "@/sanity/env";
+import { StudioClient } from "./StudioClient";
 
 export const dynamic = "force-static";
+export { metadata, viewport };
 
-export default async function StudioPage() {
+export default function StudioPage() {
   if (!isSanityConfigured) {
     return (
       <div className="min-h-screen bg-cream px-6 py-20 text-charcoal">
@@ -18,7 +20,5 @@ export default async function StudioPage() {
     );
   }
 
-  const config = (await import("../../../../sanity.config")).default;
-
-  return <NextStudio config={config} />;
+  return <StudioClient />;
 }
