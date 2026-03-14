@@ -5,18 +5,24 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { scaleIn } from "@/lib/animations";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { galleryCategories, allGalleryImages } from "@/data/gallery";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
-import type { GalleryImage } from "@/types";
+import type { CmsGalleryCategory, CmsGalleryImage } from "@/lib/cms/types";
 
-export function GalleryGrid() {
+interface GalleryGridProps {
+  title: string;
+  subtitle: string;
+  categories: CmsGalleryCategory[];
+  images: CmsGalleryImage[];
+}
+
+export function GalleryGrid({ title, subtitle, categories, images }: GalleryGridProps) {
   const [activeCategory, setActiveCategory] = useState("all");
-  const [lightboxImage, setLightboxImage] = useState<GalleryImage | null>(null);
+  const [lightboxImage, setLightboxImage] = useState<CmsGalleryImage | null>(null);
 
   const filteredImages =
     activeCategory === "all"
-      ? allGalleryImages
-      : allGalleryImages.filter((img) => img.category === activeCategory);
+      ? images
+      : images.filter((img) => img.category === activeCategory);
 
   const currentIndex = lightboxImage
     ? filteredImages.findIndex((img) => img.id === lightboxImage.id)
@@ -52,8 +58,8 @@ export function GalleryGrid() {
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <SectionHeading
-        title="Gallery"
-        subtitle="Moments of unity, service, and celebration from across the Conejo Valley."
+        title={title}
+        subtitle={subtitle}
       />
 
       {/* Category tabs */}
@@ -75,7 +81,7 @@ export function GalleryGrid() {
           )}
           <span className="relative z-10">All</span>
         </button>
-        {galleryCategories.map((cat) => (
+        {categories.map((cat) => (
           <button
             key={cat.slug}
             onClick={() => setActiveCategory(cat.slug)}

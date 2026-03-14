@@ -7,8 +7,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { contactFormSchema, type ContactFormData } from "@/lib/validations";
 import { fadeInUp, slideInLeft, slideInRight } from "@/lib/animations";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { siteConfig } from "@/lib/constants";
 import { Mail, Facebook, CheckCircle, Send } from "lucide-react";
+import type { SiteSettingsContent } from "@/lib/cms/types";
 
 function ContactForm({
   label,
@@ -145,23 +145,29 @@ function ContactForm({
   );
 }
 
-export function ContactSection() {
+interface ContactSectionProps {
+  title: string;
+  subtitle: string;
+  settings: SiteSettingsContent;
+}
+
+export function ContactSection({ title, subtitle, settings }: ContactSectionProps) {
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <SectionHeading
-        title="Get In Touch"
-        subtitle="We'd love to hear from you. Reach out to CVIA or WIN below."
+        title={title}
+        subtitle={subtitle}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
         <ContactForm
           label="CVIA"
-          email={siteConfig.emails.cvia}
+          email={settings.emails.cvia}
           variant="left"
         />
         <ContactForm
           label="WIN"
-          email={siteConfig.emails.win}
+          email={settings.emails.win}
           variant="right"
         />
       </div>
@@ -179,7 +185,7 @@ export function ContactSection() {
         </p>
         <div className="flex items-center justify-center gap-4">
           <a
-            href={siteConfig.facebook}
+            href={settings.facebookUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="w-12 h-12 rounded-full bg-warm-white border border-sand/50 hover:border-sage/30 hover:bg-sage/5 flex items-center justify-center text-warm-gray hover:text-sage transition-all"
@@ -188,7 +194,7 @@ export function ContactSection() {
             <Facebook size={20} />
           </a>
           <a
-            href={`mailto:${siteConfig.emails.cvia}`}
+            href={`mailto:${settings.emails.cvia}`}
             className="w-12 h-12 rounded-full bg-warm-white border border-sand/50 hover:border-sage/30 hover:bg-sage/5 flex items-center justify-center text-warm-gray hover:text-sage transition-all"
             aria-label="Email"
           >

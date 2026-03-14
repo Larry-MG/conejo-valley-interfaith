@@ -4,11 +4,9 @@ import { useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { staggerContainer, fadeInUp, scaleIn } from "@/lib/animations";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { events } from "@/data/events";
-import { previousEventFliers } from "@/data/fliers";
 import { Calendar, Clock, MapPin, X, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
-import type { Flier } from "@/data/fliers";
+import type { CmsEvent, CmsFlier } from "@/lib/cms/types";
 
 function formatDate(dateStr: string) {
   const date = new Date(dateStr + "T00:00:00");
@@ -17,9 +15,16 @@ function formatDate(dateStr: string) {
   return { month, day };
 }
 
-export function EventList() {
-  const upcomingEvents = events.filter((e) => !e.isPast);
-  const [lightboxFlier, setLightboxFlier] = useState<Flier | null>(null);
+interface EventListProps {
+  title: string;
+  subtitle: string;
+  events: CmsEvent[];
+  previousEventFliers: CmsFlier[];
+}
+
+export function EventList({ title, subtitle, events, previousEventFliers }: EventListProps) {
+  const upcomingEvents = events;
+  const [lightboxFlier, setLightboxFlier] = useState<CmsFlier | null>(null);
   const [upcomingFlyer, setUpcomingFlyer] = useState<string | null>(null);
 
   const currentIndex = lightboxFlier
@@ -36,7 +41,7 @@ export function EventList() {
           : (currentIndex + 1) % len;
       setLightboxFlier(previousEventFliers[newIndex]);
     },
-    [currentIndex]
+    [currentIndex, previousEventFliers]
   );
 
   useEffect(() => {
@@ -70,8 +75,8 @@ export function EventList() {
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <SectionHeading
-        title="Upcoming Events"
-        subtitle="Join us at our next gathering, service project, or community celebration."
+        title={title}
+        subtitle={subtitle}
       />
 
       {/* Upcoming events */}

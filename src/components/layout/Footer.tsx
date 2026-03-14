@@ -1,9 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Facebook, Mail, Heart } from "lucide-react";
-import { siteConfig, navLinks } from "@/lib/constants";
+import { navLinks } from "@/lib/constants";
+import type { SiteSettingsContent } from "@/lib/cms/types";
 
-export function Footer() {
+interface FooterProps {
+  settings: SiteSettingsContent;
+}
+
+export function Footer({ settings }: FooterProps) {
   return (
     <footer className="bg-sand text-charcoal/80">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
@@ -20,11 +25,11 @@ export function Footer() {
               <p className="font-serif text-xl text-charcoal">CVIA</p>
             </div>
             <p className="text-sm leading-relaxed mb-6">
-              {siteConfig.tagline}
+              {settings.tagline}
             </p>
             <div className="flex gap-3">
               <a
-                href={siteConfig.facebook}
+                href={settings.facebookUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-charcoal/10 hover:bg-sage transition-colors flex items-center justify-center"
@@ -33,7 +38,7 @@ export function Footer() {
                 <Facebook size={18} />
               </a>
               <a
-                href={`mailto:${siteConfig.emails.cvia}`}
+                href={`mailto:${settings.emails.cvia}`}
                 className="w-10 h-10 rounded-full bg-charcoal/10 hover:bg-sage transition-colors flex items-center justify-center"
                 aria-label="Email CVIA"
               >
@@ -67,13 +72,13 @@ export function Footer() {
               CVIA
             </h3>
             <p className="text-sm mb-2">
-              Meets 2nd Tuesday of each month
+              {settings.meetings.cvia}
             </p>
             <a
-              href={`mailto:${siteConfig.emails.cvia}`}
+              href={`mailto:${settings.emails.cvia}`}
               className="text-sm text-terracotta hover:text-terracotta-light transition-colors"
             >
-              {siteConfig.emails.cvia}
+              {settings.emails.cvia}
             </a>
           </div>
 
@@ -83,13 +88,13 @@ export function Footer() {
               WIN
             </h3>
             <p className="text-sm mb-2">
-              4th Thursday of every month at 7 PM via Zoom
+              {settings.meetings.win}
             </p>
             <a
-              href={`mailto:${siteConfig.emails.win}`}
+              href={`mailto:${settings.emails.win}`}
               className="text-sm text-terracotta hover:text-terracotta-light transition-colors"
             >
-              {siteConfig.emails.win}
+              {settings.emails.win}
             </a>
           </div>
         </div>

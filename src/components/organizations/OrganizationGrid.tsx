@@ -3,15 +3,21 @@
 import { motion } from "framer-motion";
 import { staggerContainer, scaleIn } from "@/lib/animations";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { organizations } from "@/data/organizations";
 import { Users } from "lucide-react";
+import type { CmsOrganization } from "@/lib/cms/types";
 
-export function OrganizationGrid() {
+interface OrganizationGridProps {
+  title: string;
+  subtitle: string;
+  organizations: CmsOrganization[];
+}
+
+export function OrganizationGrid({ title, subtitle, organizations }: OrganizationGridProps) {
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <SectionHeading
-        title="Our Faith Community"
-        subtitle="28 organizations united across faith traditions, working together for peace, understanding, and service in the Conejo Valley."
+        title={title}
+        subtitle={subtitle}
       />
 
       <motion.div

@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Conejo Valley Interfaith site
 
-## Getting Started
+This Next.js app includes an embedded Sanity Studio at `/studio` plus a structured content layer for homepage copy, inner-page headings, organizations, events, past-event fliers, and gallery content.
 
-First, run the development server:
+## Local development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000` for the site and `http://localhost:3000/studio` for the CMS.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Sanity setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Create or choose a Sanity project and dataset.
+2. Copy `.env.example` to `.env.local`.
+3. Fill in:
 
-## Learn More
+```bash
+NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
+NEXT_PUBLIC_SANITY_DATASET=production
+NEXT_PUBLIC_SANITY_API_VERSION=2026-03-14
+SANITY_API_READ_TOKEN=optional_server_token_for_private_datasets
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. In the Sanity project settings, add `http://localhost:3000` and your deployed site domain to the project CORS origins before using the embedded Studio.
+5. Start the app and open `/studio`.
+6. In Sanity, create these documents first:
+   - `Site Settings`
+   - `Home Page`
+   - four `Page Copy` entries with slugs `organizations`, `events`, `gallery`, and `contact`
+7. Add organizations, upcoming events, past event fliers, gallery categories, and gallery images.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Ahmad editing guide
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Use `Site Settings` for sitewide email addresses, footer meeting copy, tagline, and Facebook URL.
+- Use `Home Page` for the animated homepage text and CTA buttons only. The layout and animation code stay locked in React.
+- Use `Inner Pages` for each page heading, subtitle, and metadata copy.
+- Use `Upcoming Events`, `Past Event Fliers`, `Organizations`, `Gallery Categories`, and `Gallery Images` for structured collections.
+- Avoid deleting categories that still have gallery images referencing them.
 
-## Deploy on Vercel
+## Content safety model
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- The homepage animation and layout remain in code; Sanity only controls approved text and collection data.
+- Inner pages use structured fields instead of portable-text page building.
+- If Sanity env vars are missing or the API is unavailable, the site falls back to the current hardcoded content so production does not blank out.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Validation
+
+Run these before shipping:
+
+```bash
+npm run lint
+npm run build
+```

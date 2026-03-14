@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
+import type { CmsLink } from "@/lib/cms/types";
 
 const wordVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -40,8 +41,15 @@ const tileVariants = {
   }),
 };
 
-export function HeroSection() {
-  const words = "Partnering Together To Serve Our Community".split(" ");
+interface HeroSectionProps {
+  heading: string;
+  description: string;
+  primaryCta: CmsLink;
+  secondaryCta: CmsLink;
+}
+
+export function HeroSection({ heading, description, primaryCta, secondaryCta }: HeroSectionProps) {
+  const words = heading.split(" ");
 
   return (
     <section className="relative min-h-0 lg:min-h-[calc(100vh-5rem)] flex items-start lg:items-center overflow-hidden">
@@ -138,8 +146,7 @@ export function HeroSection() {
               transition={{ delay: 0.9, duration: 0.6 }}
               className="text-warm-gray text-lg sm:text-xl max-w-xl mb-10 leading-relaxed mx-auto lg:mx-0"
             >
-              Creating a sacred space where people of all beliefs come together
-              to foster understanding, peace, and harmony in the Conejo Valley.
+              {description}
             </motion.p>
 
             <motion.div
@@ -149,16 +156,16 @@ export function HeroSection() {
               className="flex flex-col sm:flex-row items-stretch sm:items-center lg:items-start justify-center lg:justify-start gap-4"
             >
               <Link
-                href="/events"
+                href={primaryCta.href}
                 className="inline-flex items-center justify-center px-8 py-3.5 text-base font-medium text-white bg-sage hover:bg-deep-forest rounded-full transition-colors shadow-lg shadow-sage/20"
               >
-                Upcoming Events
+                {primaryCta.label}
               </Link>
               <Link
-                href="/organizations"
+                href={secondaryCta.href}
                 className="inline-flex items-center justify-center px-8 py-3.5 text-base font-medium text-sage border-2 border-sage hover:bg-sage hover:text-white rounded-full transition-colors"
               >
-                Our Community
+                {secondaryCta.label}
               </Link>
             </motion.div>
 
